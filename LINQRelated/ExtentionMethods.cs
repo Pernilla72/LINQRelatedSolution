@@ -53,7 +53,16 @@ internal static class ExtentionMethods
         }
     }
 
-    public static void Print<T>(this IEnumerable<T> collection, Func<T, object> selector)
+    //public static void Print<T>(this IEnumerable<T> collection, Func<T, object> selector)
+    //{
+    //    foreach (T item in collection)
+    //    {
+    //        Console.WriteLine(selector(item));
+    //    }
+    //}
+
+        //En annan lösning av överlagrad printmetod dagens uppgift: IStället för object är
+    public static void Print<T, B>(this IEnumerable<T> collection, Func<T, B> selector)
     {
         foreach (T item in collection)
         {
@@ -61,6 +70,7 @@ internal static class ExtentionMethods
         }
     }
 }
+
 
 //Överlagra Print() metoden med en version som tar emot en delegat "selector" som pekar ut vad som
 //ska printas: När metoden anropas görs det med: Patient.Print(p => p.HeightInCm)  etc...
